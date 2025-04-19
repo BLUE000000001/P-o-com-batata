@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aviso de Ativação</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      background-color: #111;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #ff0000;
+    }
+    h1 {
+      color: #ff4444;
+    }
+    p {
+      margin-top: 20px;
+      line-height: 1.5em;
+    }
+    .buttons {
+      margin-top: 30px;
+    }
+    button {
+      background-color: #222;
+      color: white;
+      border: 2px solid #fff;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #ff0000;
+    }
+
+    #jumpscare {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: black;
+      z-index: 9999;
+    }
+
+    #jumpscare img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Modo Hardcore Psicológico</h1>
+    <p>
+      Este modo contém simulações intensas que podem causar desconforto psicológico.  
+      <strong>Não recomendado</strong> para pessoas sensíveis a temas como ansiedade, paranoia, ou delírios visuais/auditivos.  
+      Ao continuar, você afirma estar ciente de que tudo é fictício.
+    </p>
+
+    <div class="buttons">
+      <button onmouseover="showJumpscare()" onclick="confirmar()">Ativar mesmo assim</button>
+      <button onclick="voltar()">Voltar</button>
+    </div>
+  </div>
+
+  <div id="jumpscare">
+    <img src="https://i.imgur.com/B0XjR3G.png" alt="Jumpscare">
+  </div>
+
+  <!-- Sons -->
+  <audio id="jumpscare-sound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+  <audio id="background-sound" loop="true" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
+
+  <script>
+    // Função para mostrar o jumpscare
+    function showJumpscare() {
+      const scare = document.getElementById('jumpscare');
+      const jumpSound = document.getElementById('jumpscare-sound');
+      scare.style.display = 'block';
+      jumpSound.play(); // Reproduzir o som do jumpscare
+
+      setTimeout(() => {
+        scare.style.display = 'none';
+      }, 800);
+    }
+
+    // Função de confirmação
+    function confirmar() {
+      alert("Modo ativado. Você confirmou estar ciente da natureza fictícia deste conteúdo.");
+      // Aqui poderia acionar o modo no jogo/mod
+    }
+
+    // Função para voltar ao menu anterior
+    function voltar() {
+      alert("Retornando ao menu anterior.");
+      // Pode redirecionar ou fechar a interface
+    }
+
+    // Reproduzir som de fundo
+    const bgSound = document.getElementById('background-sound');
+    bgSound.play();  // Inicia o som de fundo assim que a página carregar
+  </script>
+</body>
+</html>
